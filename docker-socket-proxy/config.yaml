@@ -15,7 +15,8 @@ arch:
 init: false
 homeassistant_api: false
 host_network: true
-privileged: true
+privileged:
+  - SYS_ADMIN
 docker_api: true
 options:
   port: 2375
