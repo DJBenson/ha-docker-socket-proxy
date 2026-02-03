@@ -1,0 +1,75 @@
+configuration:
+  port:
+    name: Porta
+    description: Porta di rete per il Docker Socket Proxy (predefinita 2375)
+
+  containers:
+    name: "Sicuro: Container"
+    description: Consenti elenco e ispezione dei container (sola lettura)
+  images:
+    name: "Sicuro: Immagini"
+    description: Consenti elenco e ispezione delle immagini (sola lettura)
+  info:
+    name: "Sicuro: Info"
+    description: Consenti query informazioni di sistema Docker
+  networks:
+    name: "Sicuro: Reti"
+    description: Consenti elenco e ispezione delle reti (sola lettura)
+  volumes:
+    name: "Sicuro: Volumi"
+    description: Consenti elenco e ispezione dei volumi (sola lettura)
+  version:
+    name: "Sicuro: Versione"
+    description: Consenti informazioni versione Docker
+  events:
+    name: "Sicuro: Eventi"
+    description: Consenti sottoscrizione al flusso eventi Docker
+
+  post:
+    name: "PERICOLO: Richieste POST"
+    description: Consenti richieste POST/PUT/DELETE. Richiesto per QUALSIASI operazione di scrittura. Attivare con cautela!
+  auth:
+    name: "PERICOLO: Auth"
+    description: Consenti operazioni di autenticazione
+  build:
+    name: "PERICOLO: Build"
+    description: Consenti costruzione immagini Docker
+  commit:
+    name: "PERICOLO: Commit"
+    description: Consenti commit modifiche container in immagini
+  configs:
+    name: "PERICOLO: Configs"
+    description: Consenti gestione configurazioni Docker
+  distribution:
+    name: "PERICOLO: Distribution"
+    description: Consenti operazioni distribuzione/registro
+  exec:
+    name: "PERICOLO: Exec"
+    description: Consenti esecuzione comandi nei container
+  grpc:
+    name: "PERICOLO: gRPC"
+    description: Consenti accesso API gRPC
+  nodes:
+    name: "PERICOLO: Nodes"
+    description: Consenti gestione nodi Swarm
+  plugins:
+    name: "PERICOLO: Plugins"
+    description: Consenti gestione plugin Docker
+  secrets:
+    name: "PERICOLO: Secrets"
+    description: Consenti gestione segreti Docker
+  services:
+    name: "PERICOLO: Services"
+    description: Consenti gestione servizi Swarm
+  session:
+    name: "PERICOLO: Session"
+    description: Consenti operazioni sessione interattiva
+  swarm:
+    name: "PERICOLO: Swarm"
+    description: Consenti gestione cluster Swarm
+  system:
+    name: "PERICOLO: System"
+    description: Consenti operazioni sistema Docker (prune, df, ecc.)
+  tasks:
+    name: "PERICOLO: Tasks"
+    description: Consenti gestione task Swarm

@@ -1,0 +1,75 @@
+configuration:
+  port:
+    name: Puerto
+    description: Puerto de red para el Docker Socket Proxy (por defecto 2375)
+
+  containers:
+    name: "Seguro: Contenedores"
+    description: Permitir listar e inspeccionar contenedores (solo lectura)
+  images:
+    name: "Seguro: Imágenes"
+    description: Permitir listar e inspeccionar imágenes (solo lectura)
+  info:
+    name: "Seguro: Info"
+    description: Permitir consultas de información del sistema Docker
+  networks:
+    name: "Seguro: Redes"
+    description: Permitir listar e inspeccionar redes (solo lectura)
+  volumes:
+    name: "Seguro: Volúmenes"
+    description: Permitir listar e inspeccionar volúmenes (solo lectura)
+  version:
+    name: "Seguro: Versión"
+    description: Permitir información de versión de Docker
+  events:
+    name: "Seguro: Eventos"
+    description: Permitir suscripción al flujo de eventos de Docker
+
+  post:
+    name: "PELIGRO: Solicitudes POST"
+    description: Permitir solicitudes POST/PUT/DELETE. Requerido para CUALQUIER operación de escritura. ¡Activar con precaución!
+  auth:
+    name: "PELIGRO: Auth"
+    description: Permitir operaciones de autenticación
+  build:
+    name: "PELIGRO: Build"
+    description: Permitir construcción de imágenes Docker
+  commit:
+    name: "PELIGRO: Commit"
+    description: Permitir confirmar cambios de contenedor a imágenes
+  configs:
+    name: "PELIGRO: Configs"
+    description: Permitir gestión de configuraciones Docker
+  distribution:
+    name: "PELIGRO: Distribution"
+    description: Permitir operaciones de distribución/registro
+  exec:
+    name: "PELIGRO: Exec"
+    description: Permitir ejecutar comandos dentro de contenedores
+  grpc:
+    name: "PELIGRO: gRPC"
+    description: Permitir acceso a la API gRPC
+  nodes:
+    name: "PELIGRO: Nodes"
+    description: Permitir gestión de nodos Swarm
+  plugins:
+    name: "PELIGRO: Plugins"
+    description: Permitir gestión de plugins Docker
+  secrets:
+    name: "PELIGRO: Secrets"
+    description: Permitir gestión de secretos Docker
+  services:
+    name: "PELIGRO: Services"
+    description: Permitir gestión de servicios Swarm
+  session:
+    name: "PELIGRO: Session"
+    description: Permitir operaciones de sesión interactiva
+  swarm:
+    name: "PELIGRO: Swarm"
+    description: Permitir gestión del clúster Swarm
+  system:
+    name: "PELIGRO: System"
+    description: Permitir operaciones del sistema Docker (prune, df, etc.)
+  tasks:
+    name: "PELIGRO: Tasks"
+    description: Permitir gestión de tareas Swarm

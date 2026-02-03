@@ -1,0 +1,75 @@
+configuration:
+  port:
+    name: Port
+    description: Port réseau pour le Docker Socket Proxy (par défaut 2375)
+
+  containers:
+    name: "Sûr: Conteneurs"
+    description: Autoriser la liste et l'inspection des conteneurs (lecture seule)
+  images:
+    name: "Sûr: Images"
+    description: Autoriser la liste et l'inspection des images (lecture seule)
+  info:
+    name: "Sûr: Info"
+    description: Autoriser les requêtes d'informations système Docker
+  networks:
+    name: "Sûr: Réseaux"
+    description: Autoriser la liste et l'inspection des réseaux (lecture seule)
+  volumes:
+    name: "Sûr: Volumes"
+    description: Autoriser la liste et l'inspection des volumes (lecture seule)
+  version:
+    name: "Sûr: Version"
+    description: Autoriser les informations de version Docker
+  events:
+    name: "Sûr: Événements"
+    description: Autoriser l'abonnement au flux d'événements Docker
+
+  post:
+    name: "DANGER: Requêtes POST"
+    description: Autoriser les requêtes POST/PUT/DELETE. Requis pour TOUTE opération d'écriture. Activer avec prudence!
+  auth:
+    name: "DANGER: Auth"
+    description: Autoriser les opérations d'authentification
+  build:
+    name: "DANGER: Build"
+    description: Autoriser la construction d'images Docker
+  commit:
+    name: "DANGER: Commit"
+    description: Autoriser la validation des modifications de conteneur en images
+  configs:
+    name: "DANGER: Configs"
+    description: Autoriser la gestion des configurations Docker
+  distribution:
+    name: "DANGER: Distribution"
+    description: Autoriser les opérations de distribution/registre
+  exec:
+    name: "DANGER: Exec"
+    description: Autoriser l'exécution de commandes dans les conteneurs
+  grpc:
+    name: "DANGER: gRPC"
+    description: Autoriser l'accès à l'API gRPC
+  nodes:
+    name: "DANGER: Nodes"
+    description: Autoriser la gestion des nœuds Swarm
+  plugins:
+    name: "DANGER: Plugins"
+    description: Autoriser la gestion des plugins Docker
+  secrets:
+    name: "DANGER: Secrets"
+    description: Autoriser la gestion des secrets Docker
+  services:
+    name: "DANGER: Services"
+    description: Autoriser la gestion des services Swarm
+  session:
+    name: "DANGER: Session"
+    description: Autoriser les opérations de session interactive
+  swarm:
+    name: "DANGER: Swarm"
+    description: Autoriser la gestion du cluster Swarm
+  system:
+    name: "DANGER: Système"
+    description: Autoriser les opérations système Docker (prune, df, etc.)
+  tasks:
+    name: "DANGER: Tasks"
+    description: Autoriser la gestion des tâches Swarm

@@ -1,0 +1,75 @@
+configuration:
+  port:
+    name: Poort
+    description: Netwerkpoort voor de Docker Socket Proxy (standaard 2375)
+
+  containers:
+    name: "Veilig: Containers"
+    description: Toestaan om containers te bekijken en inspecteren (alleen-lezen)
+  images:
+    name: "Veilig: Images"
+    description: Toestaan om images te bekijken en inspecteren (alleen-lezen)
+  info:
+    name: "Veilig: Info"
+    description: Docker-systeeminformatie opvragen toestaan
+  networks:
+    name: "Veilig: Netwerken"
+    description: Toestaan om netwerken te bekijken en inspecteren (alleen-lezen)
+  volumes:
+    name: "Veilig: Volumes"
+    description: Toestaan om volumes te bekijken en inspecteren (alleen-lezen)
+  version:
+    name: "Veilig: Versie"
+    description: Docker-versie-informatie toestaan
+  events:
+    name: "Veilig: Events"
+    description: Docker-eventstream-abonnement toestaan
+
+  post:
+    name: "GEVAAR: POST-verzoeken"
+    description: POST/PUT/DELETE-verzoeken toestaan. Vereist voor ELKE schrijfbewerking. Voorzichtig inschakelen!
+  auth:
+    name: "GEVAAR: Auth"
+    description: Authenticatiebewerkingen toestaan
+  build:
+    name: "GEVAAR: Build"
+    description: Docker-images bouwen toestaan
+  commit:
+    name: "GEVAAR: Commit"
+    description: Container-wijzigingen naar images committen toestaan
+  configs:
+    name: "GEVAAR: Configs"
+    description: Docker-configuratiebeheer toestaan
+  distribution:
+    name: "GEVAAR: Distribution"
+    description: Distributie/registry-bewerkingen toestaan
+  exec:
+    name: "GEVAAR: Exec"
+    description: Opdrachten uitvoeren in containers toestaan
+  grpc:
+    name: "GEVAAR: gRPC"
+    description: gRPC API-toegang toestaan
+  nodes:
+    name: "GEVAAR: Nodes"
+    description: Swarm-nodebeheer toestaan
+  plugins:
+    name: "GEVAAR: Plugins"
+    description: Docker-pluginbeheer toestaan
+  secrets:
+    name: "GEVAAR: Secrets"
+    description: Docker-secretsbeheer toestaan
+  services:
+    name: "GEVAAR: Services"
+    description: Swarm-servicebeheer toestaan
+  session:
+    name: "GEVAAR: Session"
+    description: Interactieve sessiebewerkingen toestaan
+  swarm:
+    name: "GEVAAR: Swarm"
+    description: Swarm-clusterbeheer toestaan
+  system:
+    name: "GEVAAR: System"
+    description: Docker-systeembewerkingen toestaan (prune, df, etc.)
+  tasks:
+    name: "GEVAAR: Tasks"
+    description: Swarm-taskbeheer toestaan

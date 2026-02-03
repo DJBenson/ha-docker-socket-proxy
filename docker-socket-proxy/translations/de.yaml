@@ -1,0 +1,75 @@
+configuration:
+  port:
+    name: Port
+    description: Netzwerkport für den Docker Socket Proxy (Standard 2375)
+
+  containers:
+    name: "Sicher: Container"
+    description: Auflisten und Inspizieren von Containern erlauben (nur lesen)
+  images:
+    name: "Sicher: Images"
+    description: Auflisten und Inspizieren von Images erlauben (nur lesen)
+  info:
+    name: "Sicher: Info"
+    description: Docker-Systeminformationen abfragen erlauben
+  networks:
+    name: "Sicher: Netzwerke"
+    description: Auflisten und Inspizieren von Netzwerken erlauben (nur lesen)
+  volumes:
+    name: "Sicher: Volumes"
+    description: Auflisten und Inspizieren von Volumes erlauben (nur lesen)
+  version:
+    name: "Sicher: Version"
+    description: Docker-Versionsinformationen erlauben
+  events:
+    name: "Sicher: Events"
+    description: Docker-Event-Stream-Abonnement erlauben
+
+  post:
+    name: "GEFAHR: POST-Anfragen"
+    description: POST/PUT/DELETE-Anfragen erlauben. Erforderlich für JEDE Schreiboperation. Mit Vorsicht aktivieren!
+  auth:
+    name: "GEFAHR: Auth"
+    description: Authentifizierungsoperationen erlauben
+  build:
+    name: "GEFAHR: Build"
+    description: Erstellen von Docker-Images erlauben
+  commit:
+    name: "GEFAHR: Commit"
+    description: Container-Änderungen in Images committen erlauben
+  configs:
+    name: "GEFAHR: Configs"
+    description: Docker-Config-Verwaltung erlauben
+  distribution:
+    name: "GEFAHR: Distribution"
+    description: Distribution/Registry-Operationen erlauben
+  exec:
+    name: "GEFAHR: Exec"
+    description: Befehle in Containern ausführen erlauben
+  grpc:
+    name: "GEFAHR: gRPC"
+    description: gRPC-API-Zugriff erlauben
+  nodes:
+    name: "GEFAHR: Nodes"
+    description: Swarm-Node-Verwaltung erlauben
+  plugins:
+    name: "GEFAHR: Plugins"
+    description: Docker-Plugin-Verwaltung erlauben
+  secrets:
+    name: "GEFAHR: Secrets"
+    description: Docker-Secrets-Verwaltung erlauben
+  services:
+    name: "GEFAHR: Services"
+    description: Swarm-Service-Verwaltung erlauben
+  session:
+    name: "GEFAHR: Session"
+    description: Interaktive Session-Operationen erlauben
+  swarm:
+    name: "GEFAHR: Swarm"
+    description: Swarm-Cluster-Verwaltung erlauben
+  system:
+    name: "GEFAHR: System"
+    description: Docker-Systemoperationen erlauben (prune, df, etc.)
+  tasks:
+    name: "GEFAHR: Tasks"
+    description: Swarm-Task-Verwaltung erlauben
