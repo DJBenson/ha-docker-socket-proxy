@@ -4,6 +4,15 @@
 
 This add-on runs a HAProxy-based proxy that sits between your applications and the Docker socket. Instead of giving containers direct access to `/var/run/docker.sock`, they connect to this proxy which filters requests and only allows safe operations.
 
+## Requirements
+
+**Protection Mode must be disabled** for this add-on to function. This is required because the add-on needs direct access to the Docker socket.
+
+To disable Protection Mode:
+1. Go to the add-on's Info tab
+2. Scroll down and disable "Protection Mode"
+3. Restart the add-on
+
 ## Configuration
 
 ### Option: `port`
