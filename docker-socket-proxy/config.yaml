@@ -2,7 +2,7 @@ name: Docker Socket Proxy
 version: "1.0.0"
 slug: docker-socket-proxy
 description: Secure Docker Socket Proxy using Tecnativa/docker-socket-proxy
-stage: experimental
+stage: stable
 startup: services
 boot: auto
 url: "https://github.com/DJBenson/ha-docker-socket-proxy"
