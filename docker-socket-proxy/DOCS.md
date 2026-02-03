@@ -79,4 +79,4 @@ Make sure the add-on is running and the port is correct. The proxy binds to all 
 
 ### Permission denied for certain operations
 
-This is expected behavior. The proxy blocks write operations by design for security reasons.
+This is expected behavior. The proxy blocks write operations by default for security reasons. If you need write access, enable the specific options in the addon configuration (e.g., `post`, `exec`, etc.).
