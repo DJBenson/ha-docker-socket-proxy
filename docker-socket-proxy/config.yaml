@@ -1,4 +1,4 @@
-name: Docker Socket Proxy
+name: HA Docker Socket Proxy
 version: "1.0.0"
 slug: docker-socket-proxy
 description: Secure Docker Socket Proxy using Tecnativa/docker-socket-proxy
