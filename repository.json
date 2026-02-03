@@ -1,5 +1,5 @@
 {
-  "name": "Docker Socket Proxy Add-ons",
+  "name": "HA Docker Socket Proxy",
   "url": "https://github.com/DJBenson/ha-docker-socket-proxy",
   "maintainer": "DJBenson"
 }
