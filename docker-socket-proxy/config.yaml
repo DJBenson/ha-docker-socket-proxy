@@ -1,5 +1,5 @@
 name: HA Docker Socket Proxy
-version: "1.0.0"
+version: "1.1.0"
 slug: docker-socket-proxy
 description: Secure Docker Socket Proxy using Tecnativa/docker-socket-proxy
 stage: stable
@@ -20,5 +20,55 @@ privileged:
 docker_api: true
 options:
   port: 2375
+  # Read-only operations (safe)
+  containers: true
+  images: true
+  info: true
+  networks: true
+  volumes: true
+  version: true
+  events: true
+  # Write/dangerous operations (disabled by default)
+  post: false
+  auth: false
+  build: false
+  commit: false
+  configs: false
+  distribution: false
+  exec: false
+  grpc: false
+  nodes: false
+  plugins: false
+  secrets: false
+  services: false
+  session: false
+  swarm: false
+  system: false
+  tasks: false
 schema:
   port: port
+  # Read-only operations
+  containers: bool
+  images: bool
+  info: bool
+  networks: bool
+  volumes: bool
+  version: bool
+  events: bool
+  # Write/dangerous operations
+  post: bool
+  auth: bool
+  build: bool
+  commit: bool
+  configs: bool
+  distribution: bool
+  exec: bool
+  grpc: bool
+  nodes: bool
+  plugins: bool
+  secrets: bool
+  services: bool
+  session: bool
+  swarm: bool
+  system: bool
+  tasks: bool

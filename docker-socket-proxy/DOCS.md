@@ -10,29 +10,40 @@ This add-on runs a HAProxy-based proxy that sits between your applications and t
 
 The network port on which the Docker Socket Proxy will listen. Default is `2375` (the standard Docker API port).
 
-## Allowed Operations
+### Read-only API Options (enabled by default)
 
-By default, this proxy allows read-only access to:
+| Option | Default | Description |
+|--------|---------|-------------|
+| `containers` | `true` | Allow listing and inspecting containers |
+| `images` | `true` | Allow listing and inspecting images |
+| `info` | `true` | Allow Docker system information |
+| `networks` | `true` | Allow listing and inspecting networks |
+| `volumes` | `true` | Allow listing and inspecting volumes |
+| `version` | `true` | Allow Docker version information |
+| `events` | `true` | Allow Docker event stream |
 
-- **Containers**: List and inspect containers
-- **Images**: List and inspect images
-- **Networks**: List and inspect networks
-- **Volumes**: List and inspect volumes
-- **Info**: Docker system information
-- **Version**: Docker version information
-- **Events**: Docker event stream
+### Write/Dangerous API Options (disabled by default)
 
-## Blocked Operations
+| Option | Default | Description |
+|--------|---------|-------------|
+| `post` | `false` | Allow POST requests (required for write operations) |
+| `auth` | `false` | Allow auth operations |
+| `build` | `false` | Allow building images |
+| `commit` | `false` | Allow committing containers to images |
+| `configs` | `false` | Allow config management |
+| `distribution` | `false` | Allow distribution operations |
+| `exec` | `false` | Allow exec into containers |
+| `grpc` | `false` | Allow gRPC operations |
+| `nodes` | `false` | Allow node management |
+| `plugins` | `false` | Allow plugin management |
+| `secrets` | `false` | Allow secrets management |
+| `services` | `false` | Allow service management |
+| `session` | `false` | Allow session operations |
+| `swarm` | `false` | Allow swarm operations |
+| `system` | `false` | Allow system operations |
+| `tasks` | `false` | Allow task management |
 
-The following dangerous operations are blocked:
-
-- Creating, starting, stopping, or removing containers
-- Building or pushing images
-- Creating or removing networks/volumes
-- Executing commands in containers
-- Swarm operations
-- Plugin management
-- System modifications
+**Warning**: Enabling write operations reduces security. Only enable what you need.
 
 ## Use Cases
 

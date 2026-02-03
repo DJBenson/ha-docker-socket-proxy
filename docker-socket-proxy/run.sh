@@ -3,7 +3,16 @@ set -e
 
 CONFIG_PATH=/data/options.json
 
-# Read port from Home Assistant options
+# Helper function to convert boolean to 0/1
+bool_to_int() {
+  if [ "$1" = "true" ]; then
+    echo "1"
+  else
+    echo "0"
+  fi
+}
+
+# Read options from Home Assistant config
 PORT=$(jq -r '.port' $CONFIG_PATH)
 
 echo "Starting Docker Socket Proxy on port ${PORT}..."
@@ -11,40 +20,41 @@ echo "Starting Docker Socket Proxy on port ${PORT}..."
 # Export the port for haproxy
 export PORT="${PORT}"
 
-# Enable common read-only operations by default
-# These are safe operations that don't modify containers
-export CONTAINERS=1
-export IMAGES=1
-export INFO=1
-export NETWORKS=1
-export VOLUMES=1
-export VERSION=1
-export EVENTS=1
+# Read-only operations
+export CONTAINERS=$(bool_to_int "$(jq -r '.containers' $CONFIG_PATH)")
+export IMAGES=$(bool_to_int "$(jq -r '.images' $CONFIG_PATH)")
+export INFO=$(bool_to_int "$(jq -r '.info' $CONFIG_PATH)")
+export NETWORKS=$(bool_to_int "$(jq -r '.networks' $CONFIG_PATH)")
+export VOLUMES=$(bool_to_int "$(jq -r '.volumes' $CONFIG_PATH)")
+export VERSION=$(bool_to_int "$(jq -r '.version' $CONFIG_PATH)")
+export EVENTS=$(bool_to_int "$(jq -r '.events' $CONFIG_PATH)")
 
-# Disable dangerous operations by default
-export AUTH=0
-export SECRETS=0
-export POST=0
-export BUILD=0
-export COMMIT=0
-export CONFIGS=0
-export DISTRIBUTION=0
-export EXEC=0
-export GRPC=0
-export NODES=0
-export PLUGINS=0
-export SERVICES=0
-export SESSION=0
-export SWARM=0
-export SYSTEM=0
-export TASKS=0
+# Write/dangerous operations
+export POST=$(bool_to_int "$(jq -r '.post' $CONFIG_PATH)")
+export AUTH=$(bool_to_int "$(jq -r '.auth' $CONFIG_PATH)")
+export BUILD=$(bool_to_int "$(jq -r '.build' $CONFIG_PATH)")
+export COMMIT=$(bool_to_int "$(jq -r '.commit' $CONFIG_PATH)")
+export CONFIGS=$(bool_to_int "$(jq -r '.configs' $CONFIG_PATH)")
+export DISTRIBUTION=$(bool_to_int "$(jq -r '.distribution' $CONFIG_PATH)")
+export EXEC=$(bool_to_int "$(jq -r '.exec' $CONFIG_PATH)")
+export GRPC=$(bool_to_int "$(jq -r '.grpc' $CONFIG_PATH)")
+export NODES=$(bool_to_int "$(jq -r '.nodes' $CONFIG_PATH)")
+export PLUGINS=$(bool_to_int "$(jq -r '.plugins' $CONFIG_PATH)")
+export SECRETS=$(bool_to_int "$(jq -r '.secrets' $CONFIG_PATH)")
+export SERVICES=$(bool_to_int "$(jq -r '.services' $CONFIG_PATH)")
+export SESSION=$(bool_to_int "$(jq -r '.session' $CONFIG_PATH)")
+export SWARM=$(bool_to_int "$(jq -r '.swarm' $CONFIG_PATH)")
+export SYSTEM=$(bool_to_int "$(jq -r '.system' $CONFIG_PATH)")
+export TASKS=$(bool_to_int "$(jq -r '.tasks' $CONFIG_PATH)")
 
 echo "Docker Socket Proxy configuration:"
-echo "  - Port: ${PORT}"
-echo "  - Containers: ${CONTAINERS} (read-only)"
-echo "  - Images: ${IMAGES} (read-only)"
-echo "  - Networks: ${NETWORKS} (read-only)"
-echo "  - Volumes: ${VOLUMES} (read-only)"
+echo "  Port: ${PORT}"
+echo "  Read-only APIs:"
+echo "    containers=${CONTAINERS} images=${IMAGES} info=${INFO} networks=${NETWORKS}"
+echo "    volumes=${VOLUMES} version=${VERSION} events=${EVENTS}"
+echo "  Write APIs:"
+echo "    post=${POST} auth=${AUTH} build=${BUILD} commit=${COMMIT}"
+echo "    configs=${CONFIGS} exec=${EXEC} system=${SYSTEM}"
 
 # Set file descriptor limit for haproxy
 ulimit -n 10000
