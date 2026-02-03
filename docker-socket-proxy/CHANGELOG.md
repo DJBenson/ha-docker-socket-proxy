@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- Added translations for German, French, Spanish, Italian, Dutch, and Portuguese
+
 ## 1.1.0
 
 - All Docker API options now configurable via addon settings
