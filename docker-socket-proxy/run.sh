@@ -46,5 +46,14 @@ echo "  - Images: ${IMAGES} (read-only)"
 echo "  - Networks: ${NETWORKS} (read-only)"
 echo "  - Volumes: ${VOLUMES} (read-only)"
 
+# Set file descriptor limit for haproxy
+ulimit -n 10000
+
+# Configure binding (IPv4/IPv6)
+BIND_CONFIG="[::]:${PORT} v4v6"
+
+# Generate haproxy config from template
+sed "s/\${BIND_CONFIG}/${BIND_CONFIG}/g" /usr/local/etc/haproxy/haproxy.cfg.template > /tmp/haproxy.cfg
+
 # Start haproxy with the socket proxy configuration
-exec /docker-entrypoint.sh haproxy -f /usr/local/etc/haproxy/haproxy.cfg
+exec haproxy -W -db -f /tmp/haproxy.cfg
