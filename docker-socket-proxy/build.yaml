@@ -1,0 +1,6 @@
+build_from:
+  amd64: tecnativa/docker-socket-proxy:latest
+  aarch64: tecnativa/docker-socket-proxy:latest
+  armv7: tecnativa/docker-socket-proxy:latest
+  armhf: tecnativa/docker-socket-proxy:latest
+  i386: tecnativa/docker-socket-proxy:latest
