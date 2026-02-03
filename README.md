@@ -4,7 +4,7 @@ A secure Docker Socket Proxy add-on for Home Assistant using [Tecnativa/docker-s
 
 ## About
 
-This add-on provides a secure way to expose the Docker socket to other containers without giving them full access to Docker. It acts as a proxy that filters Docker API calls, only allowing safe read-only operations by default.
+This add-on provides a secure way to expose the Docker socket to other containers without giving them full access to Docker. It acts as a proxy that filters Docker API calls, allowing you to control exactly which operations are permitted.
 
 ## Installation
 
@@ -17,53 +17,64 @@ This add-on provides a secure way to expose the Docker socket to other container
    https://github.com/DJBenson/ha-docker-socket-proxy
    ```
 
-2. Find the "Docker Socket Proxy" add-on and click Install
-3. Configure the port (default: 2375)
-4. Start the add-on
+2. Find the "HA Docker Socket Proxy" add-on and click Install
+3. **Disable Protection Mode** (required for Docker socket access)
+4. Configure options as needed
+5. Start the add-on
 
 ## Configuration
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| `port` | `2375` | The port on which the proxy will listen |
+All Docker API endpoints can be individually enabled or disabled through the add-on configuration UI.
 
-### Example configuration
+### Safe Options (enabled by default)
 
-```yaml
-port: 2375
-```
+| Option | Description |
+|--------|-------------|
+| `containers` | List and inspect containers |
+| `images` | List and inspect images |
+| `networks` | List and inspect networks |
+| `volumes` | List and inspect volumes |
+| `info` | Docker system information |
+| `version` | Docker version information |
+| `events` | Docker event stream |
+
+### Dangerous Options (disabled by default)
+
+| Option | Description |
+|--------|-------------|
+| `post` | Allow POST/PUT/DELETE requests (required for any write operation) |
+| `exec` | Execute commands in containers |
+| `build` | Build Docker images |
+| `commit` | Commit container changes to images |
+| `system` | System operations (prune, df, etc.) |
+| ... | And many more - see add-on configuration for full list |
 
 ## Usage
 
-Once running, you can connect to the Docker API through the proxy at:
+Once running, connect to the Docker API through the proxy:
 
+From the host network:
 ```
-tcp://homeassistant.local:2375
-```
-
-Or from within other containers on the same host:
-
-```
-tcp://172.30.32.1:2375
+DOCKER_HOST=tcp://localhost:2375
 ```
 
-## Security
+From Home Assistant containers:
+```
+DOCKER_HOST=tcp://172.30.32.1:2375
+```
 
-This proxy only allows **read-only** operations by default:
+## Translations
 
-| Endpoint | Access |
-|----------|--------|
-| Containers | Read-only |
-| Images | Read-only |
-| Networks | Read-only |
-| Volumes | Read-only |
-| Info | Allowed |
-| Version | Allowed |
-| Events | Allowed |
-
-All write operations and dangerous endpoints are disabled.
+The add-on UI is available in:
+- English
+- German
+- French
+- Spanish
+- Italian
+- Dutch
+- Portuguese
 
 ## Support
 
-- [Issue Tracker](https://github.com/GITHUB_USERNAME/ha-docker-socket-proxy/issues)
-- [Documentation](https://github.com/Tecnativa/docker-socket-proxy)
+- [Issue Tracker](https://github.com/DJBenson/ha-docker-socket-proxy/issues)
+- [Tecnativa docker-socket-proxy Documentation](https://github.com/Tecnativa/docker-socket-proxy)
