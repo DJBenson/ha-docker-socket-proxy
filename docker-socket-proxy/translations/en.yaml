@@ -1,0 +1,77 @@
+configuration:
+  port:
+    name: Port
+    description: Network port for the Docker Socket Proxy (default 2375)
+
+  # Safe read-only operations
+  containers:
+    name: "Safe: Containers"
+    description: Allow listing and inspecting containers (read-only)
+  images:
+    name: "Safe: Images"
+    description: Allow listing and inspecting images (read-only)
+  info:
+    name: "Safe: Info"
+    description: Allow Docker system information queries
+  networks:
+    name: "Safe: Networks"
+    description: Allow listing and inspecting networks (read-only)
+  volumes:
+    name: "Safe: Volumes"
+    description: Allow listing and inspecting volumes (read-only)
+  version:
+    name: "Safe: Version"
+    description: Allow Docker version information
+  events:
+    name: "Safe: Events"
+    description: Allow Docker event stream subscription
+
+  # Dangerous write operations
+  post:
+    name: "DANGER: POST Requests"
+    description: Allow POST/PUT/DELETE requests. Required for ANY write operation. Enable with caution!
+  auth:
+    name: "DANGER: Auth"
+    description: Allow authentication operations
+  build:
+    name: "DANGER: Build"
+    description: Allow building Docker images
+  commit:
+    name: "DANGER: Commit"
+    description: Allow committing container changes to images
+  configs:
+    name: "DANGER: Configs"
+    description: Allow Docker config management
+  distribution:
+    name: "DANGER: Distribution"
+    description: Allow distribution/registry operations
+  exec:
+    name: "DANGER: Exec"
+    description: Allow executing commands inside containers
+  grpc:
+    name: "DANGER: gRPC"
+    description: Allow gRPC API access
+  nodes:
+    name: "DANGER: Nodes"
+    description: Allow Swarm node management
+  plugins:
+    name: "DANGER: Plugins"
+    description: Allow Docker plugin management
+  secrets:
+    name: "DANGER: Secrets"
+    description: Allow Docker secrets management
+  services:
+    name: "DANGER: Services"
+    description: Allow Swarm service management
+  session:
+    name: "DANGER: Session"
+    description: Allow interactive session operations
+  swarm:
+    name: "DANGER: Swarm"
+    description: Allow Swarm cluster management
+  system:
+    name: "DANGER: System"
+    description: Allow Docker system operations (prune, df, etc.)
+  tasks:
+    name: "DANGER: Tasks"
+    description: Allow Swarm task management
